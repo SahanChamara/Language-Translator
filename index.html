@@ -17,52 +17,37 @@
 
                 <div class="card text-bg-secondary mb-3 mx-auto" style="max-width: 18rem;">
                     <div class="card-header">Inout your Word</div>
-                    <div class="card-body">                        
+                    <div class="card-body">
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label"></label>
                             <textarea class="form-control" id="inputText" rows="3"></textarea>
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col d-flex justify-content-center align-content-center m-2 ">
-                <div class="btn-group p-1">
-                    <button type="button" id="btn1" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        English
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" id="dropdownItem1" href="#">English</a></li>                    
-                        <li><a class="dropdown-item" id="dropdownItem2" href="#">Sinhala</a></li>                    
-                    </ul>
-                </div>
-                <div class="btn-group p-1">
-                    <button type="button" class="btn btn-danger dropdown-toggle" id="btn2" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Sinhala
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" id="dropdown-item2"  href="#">China</a></li>
-                    </ul>
-                </div>
+                <select></select>
+                <select></select>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <div class="col"><div class="card text-bg-secondary mb-3 mx-auto" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body" id="setText">
-                        <!-- <h5 class="card-title"></h5> -->
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                <div class="col">
+                    <div class="card text-bg-secondary mb-3 mx-auto" style="max-width: 18rem;">
+                        <div class="card-header">Header</div>
+                        <div class="card-body" id="setText">
+                            <!-- <h5 class="card-title"></h5> -->
+                            <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the card's content.</p> -->
+                        </div>
                     </div>
                 </div>
+                <button type="button" class="btn btn-danger d-flex justify-content-center align-content-center mx-auto"
+                    onclick="convert()">Translate</button>
             </div>
-            <button type="button" class="btn btn-danger d-flex justify-content-center align-content-center mx-auto" onclick="convert()">Translate</button>
         </div>
-    </div>
 
 
 
@@ -73,10 +58,11 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+        <script src="countries.js"></script>
+        <script src="script.js"></script>
 </body>
 
 </html>
