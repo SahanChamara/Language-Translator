@@ -1,4 +1,6 @@
 let btn1 = document.querySelectorAll("btn1");
+// for the history
+let outputText = "";
 
 const selectTag = document.querySelectorAll("select");
 selectTag.forEach((tag,id) => {
@@ -28,7 +30,7 @@ function convert(){
     let select2 = document.getElementById("select2").value;
     console.log(inputText);       
 
-    setSelectLanguage();
+    setSelectLanguage();    
 
     const raw = "";
 
@@ -38,13 +40,19 @@ const requestOptions = {
   redirect: "follow"
 };
 
+
 fetch(`https://api.mymemory.translated.net/get?q=${inputText}&langpair=${select1}|${select2}`, requestOptions)
     .then(res => res.json())
     .then(data => {
         let output = data.responseData.translatedText;
-        document.getElementById("setText").innerHTML=output;        
+        document.getElementById("setText").innerHTML=output; 
+        outputText=output;       
     })
     .catch((error) => console.error(error));   
+
+    setTimeout(() => {
+        history();
+    }, 1000);
 }
 
 
@@ -58,12 +66,39 @@ function speech(){
     }
 }
 
+let historyArr = [];
+function history(){
+    let inputText = document.getElementById("inputText").value;    
+    let inputHistory =  `<ul>
+                        <li>Input Text Is :  ${inputText}</li>
+                        <li>Translated Text Is :  ${outputText}</li>
+                        </ul>`
+    
+        
+    historyArr.push(inputHistory);
+    console.log(historyArr);    
+    
+}
 
-
-
-
-
-
+function historyBtn(){   
+    Swal.fire({
+        title: historyArr,
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+        }
+      });
+}
 
 
 
