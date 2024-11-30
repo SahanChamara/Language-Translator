@@ -24,13 +24,33 @@ function setSelectLanguage(){
     document.getElementById("setSelectedLang2").innerHTML = countries[selectLang2];
 }
 
+function setFlags(){
+    let selectLang1 = document.getElementById("select1").value;
+    let selectLang2 = document.getElementById("select2").value;
+
+    let flag1 = countries[selectLang1].substring(0,2)
+    let lowerCaseFlag1 = flag1.toLocaleLowerCase(flag1)    
+    console.log(lowerCaseFlag1);
+    
+
+    
+    let flag2 = countries[selectLang2].substring(0,2)
+    let lowerCaseFlag2 = flag2.toLocaleLowerCase(flag2)    
+    console.log(lowerCaseFlag2);
+    
+
+    document.getElementById("setFlag1").innerHTML=`<img src="https://flagcdn.com/w40/${lowerCaseFlag1}.png" alt="English" class="flag-icon me-2">`
+    document.getElementById("setFlag2").innerHTML=`<img src="https://flagcdn.com/w40/${lowerCaseFlag2}.png" alt="English" class="flag-icon me-2">`
+}
+
 function convert(){
     let inputText = document.getElementById("inputText").value;
     let select1= document.getElementById("select1").value;
     let select2 = document.getElementById("select2").value;
     console.log(inputText);       
 
-    setSelectLanguage();    
+    setSelectLanguage(); 
+    setFlags();
 
     const raw = "";
 
@@ -99,9 +119,6 @@ function historyBtn(){
         }
       });
 }
-
-
-
 
 
 
