@@ -1,19 +1,4 @@
 let btn1 = document.querySelectorAll("btn1");
-//let btn2 = document.getElementById("btn2");
-// let dropdown1 = document.getElementById("dropdown1");
-// let dropdown2 = document.getElementById("dropdown2");
-// let dropdown3 = document.getElementById("dropdown3");
-// let dropdown4 = document.getElementById("dropdown4");
-
-// dropdown1.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     btn1.value = dropdown1.textContent;
-// });
-
-// dropdown2.addEventListener("click" , (e) => {
-//     e.preventDefault();
-//     btn1.value = dropdown2.textContent;
-// });
 
 const selectTag = document.querySelectorAll("select");
 selectTag.forEach((tag,id) => {
@@ -25,19 +10,26 @@ selectTag.forEach((tag,id) => {
             selected = "selected";
         }
         let option = `<option value="${countryCode}" ${selected}>${countries[countryCode]}</option>`;       
-        tag.insertAdjacentHTML("beforeend",option);        
-        
-    }
+        tag.insertAdjacentHTML("beforeend",option);  
+    }    
 })
 
+function setSelectLanguage(){
+    let selectLang1 = document.getElementById("select1").value;
+    let selectLang2 = document.getElementById("select2").value;
 
-
+    document.getElementById("setSelectedLang1").innerHTML = countries[selectLang1];
+    document.getElementById("setSelectedLang2").innerHTML = countries[selectLang2];
+}
 
 function convert(){
     let inputText = document.getElementById("inputText").value;
+    let select1= document.getElementById("select1").value;
+    let select2 = document.getElementById("select2").value;
+    console.log(inputText);       
 
-    console.log(inputText);
-    
+    setSelectLanguage();
+
     const raw = "";
 
 const requestOptions = {
@@ -46,14 +38,29 @@ const requestOptions = {
   redirect: "follow"
 };
 
-fetch(`https://api.mymemory.translated.net/get?q=${inputText}!&langpair=en-GB|si-LK`, requestOptions)
+fetch(`https://api.mymemory.translated.net/get?q=${inputText}&langpair=${select1}|${select2}`, requestOptions)
     .then(res => res.json())
     .then(data => {
         let output = data.responseData.translatedText;
         document.getElementById("setText").innerHTML=output;        
     })
-    .catch((error) => console.error(error));
+    .catch((error) => console.error(error));   
 }
+
+
+function speech(){   
+    let inputText = document.getElementById("inputText").value;
+    try {
+        let utr = new SpeechSynthesisUtterance(inputText);
+        speechSynthesis.speak(utr);
+    } catch (e) {
+        console.error("Speech synthesis failed:", e);
+    }
+}
+
+
+
+
 
 
 
